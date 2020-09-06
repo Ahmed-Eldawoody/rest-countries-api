@@ -60,6 +60,22 @@ function ContextProvider({ children }) {
     setCountries([...allCountires]);
   }
 
+  // by region
+  function filterByRegion(event) {
+    handleSubmit(event.target.value);
+    event.preventDefault();
+    if (event.target.value === "") {
+      setCountries([...allCountires]);
+    }
+  }
+
+  function handleSubmit(value) {
+    const filterdByRegionCountries = allCountires.filter(
+      (cunt) => cunt.region === value
+    );
+    setCountries(filterdByRegionCountries);
+  }
+
   return (
     <Context.Provider
       value={{
@@ -69,7 +85,8 @@ function ContextProvider({ children }) {
         moon,
         handleSearch,
         searchChange,
-        Reset
+        Reset,
+        filterByRegion
       }}
     >
       {children}
