@@ -3,6 +3,7 @@ import { HiOutlineMoon, HiMoon } from "react-icons/hi";
 import "./App.css";
 
 import SearchBar from "../SearchBar/SearchBar";
+import Countries from "../Countries/Countries";
 
 export default function App() {
   const [theme, setTheme] = useState("Light");
@@ -32,6 +33,9 @@ export default function App() {
       <main>
         <section className="seachbar">
           <SearchBar theme={theme} />
+        </section>
+        <section className="countries">
+          <Countries theme={theme} />
         </section>
       </main>
     </div>
