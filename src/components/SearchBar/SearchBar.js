@@ -55,7 +55,9 @@ export default function SearchBar(props) {
         <form>
           {/* <label>Filter by region:</label> */}
           <select name="regions" id="region-select" onChange={regionFilter}>
-            <option value="">Filter By region</option>
+            <option value="" defaultValue selected>
+              Filter By region
+            </option>
             <option value="Africa">Africa</option>
             <option value="Americas">Americas</option>
             <option value="Asia">Asia</option>

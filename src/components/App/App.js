@@ -1,23 +1,12 @@
-import React, { useState } from "react";
-import { HiOutlineMoon, HiMoon } from "react-icons/hi";
+import React, { useContext } from "react";
 import "./App.css";
+import { Context } from "../../Context/Context";
 
 import SearchBar from "../SearchBar/SearchBar";
 import Countries from "../Countries/Countries";
 
 export default function App() {
-  const [theme, setTheme] = useState("Light");
-  function themeChange() {
-    theme === "Light" ? setTheme("Dark") : setTheme("Light");
-  }
-
-  function moon() {
-    if (theme === "Light") {
-      return <HiOutlineMoon className="icon" />;
-    } else {
-      return <HiMoon className="icon" />;
-    }
-  }
+  const { theme, themeChange, moon } = useContext(Context);
 
   return (
     <div className={`App-${theme}`}>
@@ -35,9 +24,10 @@ export default function App() {
           <SearchBar theme={theme} />
         </section>
         <section className="countries">
-          <Countries theme={theme} />
+          <Countries />
         </section>
       </main>
+      <footer className={`footer-${theme}`}></footer>
     </div>
   );
 }
