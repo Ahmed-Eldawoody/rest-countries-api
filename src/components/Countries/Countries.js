@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../Context/Context";
 import { GiEarthAmerica } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import "./Countries.css";
 
 export default function Countries(props) {
@@ -12,7 +13,9 @@ export default function Countries(props) {
         countries.map((country) => {
           return (
             <div className={`container-${theme}`} key={country.name}>
-              <img src={country.flag} alt="country flag" className="flag" />
+              <Link to={`/${country.name}`}>
+                <img src={country.flag} alt="country flag" className="flag" />
+              </Link>
               <h3 className="name">{country.name}</h3>
               <h5 className="population">
                 Population: <span>{country.population.toLocaleString()}</span>
@@ -27,8 +30,8 @@ export default function Countries(props) {
           );
         })
       ) : (
-        <div>
-          <GiEarthAmerica />
+        <div style={{ height: "100vh" }}>
+          <GiEarthAmerica style={{ fontSize: "100" }} />
         </div>
       )}
     </div>

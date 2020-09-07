@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import "./App.css";
 import { Context } from "../../Context/Context";
+import { Switch, Route } from "react-router-dom";
 
 import SearchBar from "../SearchBar/SearchBar";
 import Countries from "../Countries/Countries";
+import Country from "../Country/Country";
 
 export default function App() {
   const { theme, themeChange, moon } = useContext(Context);
@@ -20,14 +22,22 @@ export default function App() {
         </nav>
       </header>
       <main>
-        <section className="seachbar">
-          <SearchBar theme={theme} />
-        </section>
-        <section className="countries">
-          <Countries />
-        </section>
+        <Switch>
+          <Route exact path="/">
+            <section className="seachbar">
+              <SearchBar theme={theme} />
+            </section>
+            <section className="countries">
+              <Countries />
+            </section>
+          </Route>
+          <Route path="/:CountryName">
+            <Country />
+          </Route>
+        </Switch>
       </main>
-      <footer className={`footer-${theme}`}></footer>
+
+      {/* <footer className={`footer-${theme}`}></footer> */}
     </div>
   );
 }
